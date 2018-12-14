@@ -6,11 +6,32 @@ namespace AnalyzingNumbers
     {
         static void Main(string[] args)
         {
-            int[] myList = { 2, 4, 6, 8};
-            foreach (int e in myList)
+            Console.Write("Enter the number of items: ");
+            int n = Int16.Parse(Console.ReadLine());
+            double[] numbers = new double[n];
+            double sum = 0;
+
+            Console.Write("Enter the numbers: ");
+            var data = Console.ReadLine().Split(' ');
+            for (int i = 0; i < n; i++)
             {
-                Console.WriteLine(Math.Pow(e, 2));
+                numbers[i] = Double.Parse(data[i]);
+                sum += numbers[i];
             }
+
+            double average = sum / n;
+
+            int count = 0; // The number of elements above average
+            for (int i = 0; i < n; i++)
+            {
+                if (numbers[i] > average)
+                {
+                    count++;
+                }
+            }
+
+            Console.WriteLine("Average is " + average);
+            Console.WriteLine("Number of elements above the average is " + count);
         }
     }
 }
